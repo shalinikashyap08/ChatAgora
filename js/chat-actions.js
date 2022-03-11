@@ -83,7 +83,7 @@ const setHtmlOfChat=(list,type)=>{
         
         for(let i=0;i<list.length;i++){
             console.log(list[i].senderId==userId)
-            messagesList.innerHTML = `${list[i].senderId==userId?'<li class="sent"><p>'+list[i]?.message+'</p></li>':'<li class="replies"><p>'+list[i]?.message+'</p></li>'}`+messagesList.innerHTML;
+            messagesList.innerHTML = `${list[i].senderId==userId?'<li class="sent"><p>'+list[i]?.message+'</p></li>':'<li class="replies"><p>'+list[i].message+' <span class="read_time">12:00pm <i class="unread"><svg xmlns="http://www.w3.org/2000/svg" width="8.178" height="8.179" viewBox="0 0 8.178 8.179"><path id="Icon_awesome-check-double" data-name="Icon awesome-check-double" d="M8.063,2.791l-.633-.633a.382.382,0,0,0-.541,0L3.064,5.984,1.285,4.2a.382.382,0,0,0-.541,0l-.634.634a.384.384,0,0,0,0,.543L2.792,8.065a.382.382,0,0,0,.541,0L8.062,3.334A.385.385,0,0,0,8.063,2.791ZM2.884,4.484a.254.254,0,0,0,.361,0L6.567,1.158a.256.256,0,0,0,0-.361L5.845.074a.254.254,0,0,0-.361,0l-2.42,2.42-.885-.886a.254.254,0,0,0-.361,0l-.724.724a.256.256,0,0,0,0,.361Z" transform="translate(0.004 0.002)" fill="#55C1D1"></path></svg></i></span></p></li>'}`+messagesList.innerHTML;
         }
         messageBox.scrollTop = messageBox.clientHeight;
         flag=true;
