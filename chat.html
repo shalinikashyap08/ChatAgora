@@ -17,7 +17,6 @@
 </head>
 
 <body>
-
 	<div id="chat_panel">
 		<div id="sidepanel">
 			<div class="chat_header">
@@ -41,8 +40,7 @@
 				</div>
 			</div>
 			<div id="contacts">
-				<ul id="userList">
-					
+				<ul id="userList">				
 				</ul>
 			</div>
 
@@ -73,12 +71,12 @@
 					
 				</ul>
 			</div>
-			<div class="message-input">
+			<div class="d-flex message-input">
 				<div class="msg_field">
 					<input type="text" id="textMessage" placeholder="Write your message..." onkeydown="clickPress(event)"/>
-					<i class="fa fa-paperclip attachment" aria-hidden="true"></i>
+					<span class="file_attachment"><img src="images/icons/attach_icon.svg" alt="" /></span>
 				</div>
-				<!-- <button class="submit" ><i class="fa fa-paper-plane" aria-hidden="true"></i></button> -->
+				<button class="btn btn-transparent record_btn"><i><img src="images/icons/record_btn.svg" alt="" /></i></button>
 			</div>
 		</div>
 	</div>
@@ -117,11 +115,7 @@
 			};
 
 			$("#status-options").removeClass("active");
-		});
-
-		
-
-		
+		});		
 //# sourceURL=pen.js
 	</script>
 </body>

@@ -17,7 +17,7 @@ input::-moz-placeholder {
 button {cursor: pointer;}
 .btn-transparent {background: transparent; border: 0; outline: 0!important;}
 
-#chat_panel {height: 92vh; min-height: 300px; max-height: 720px; background: #2A2A2A; padding:10px; border-radius: 12px; } 
+#chat_panel {height: 92vh; max-width: 670px; min-height: 300px; max-height: 720px; background: #2A2A2A; padding:10px; border-radius: 12px; } 
 
 #sidepanel {float: left; border-radius: 12px; min-width: 240px; max-width: 240px; height: 100%; background: #181818;
   border:1px solid #707070; color: #fff; padding: 14px; overflow: hidden; position: relative; }
@@ -194,7 +194,7 @@ button {cursor: pointer;}
   background: #707070; color: #fff; }
 #search input:focus {outline: none; background: #333;}
 
-#contacts {height: calc(100% - 220px); overflow-y: auto; overflow-x: hidden; padding: 0 10px 0 15px;}
+#contacts {height: calc(100% - 220px); overflow-y: auto; overflow-x: hidden; padding: 0 0 0 15px;}
 
 @media screen and (max-width: 735px) {
   #contacts::-webkit-scrollbar {
@@ -236,8 +236,8 @@ button {cursor: pointer;}
 .msg_time {position: absolute; right: 0; top: 0; color: #fff; font-size: 11px;}
 .contact-status {position: absolute; right: 0; width: 10px; height: 10px; border-radius: 50%; background: #D3D3D3; bottom: -2px;}
 .contact-status.online {background: #2ecc71; }
-.contact_info { padding: 5px 15px 0 0; margin:auto 0 auto 10px; width: calc(100% - 10px - 50px); position: relative;}
-.contact_info .name {font-weight: 600; font-size: 12px; margin: 0; }
+.contact_info { padding:0px 15px 0 0; margin:auto 0 auto 10px; width: calc(100% - 10px - 36px); position: relative;}
+.contact_info .name {font-weight: 600; font-size: 12px; margin: 0; text-transform: capitalize; padding-right: 30px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .contact_info .preview {margin: 2px 0 0 0; font-weight: 400; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; -moz-transition: 1s all ease; -o-transition: 1s all ease; -webkit-transition: 1s all ease; transition: 1s all ease; }
 #contacts ul li.contact.active  .contact_info .name, #contacts ul li.contact.active .contact_info .preview {color: #55C1D1; } 
 
@@ -256,13 +256,28 @@ button {cursor: pointer;}
 .right-header {width: 100%; display: flex; justify-content: space-between; align-items: center; background: #0E0E0E; border-radius: 7px; padding: 10px;} 
 .profile_pic {width: 250px;}
 .profile_pic figure {margin: 0;width: 40px; height: 40px;}
-.profile_pic img {width: 100%; object-fit: cover; height: 100%; border-radius: 7px; object-fit: cover;}
+.profile_pic img {width: 100%; object-fit: cover; height: 100%; border-radius: 50%; object-fit: cover;}
 .p_summary {padding: 5px 0 0 0; margin: auto 0 auto 10px; width: calc(100% - 10px - 50px);}
-.p_summary h6 {font-weight: 600; font-size: 12px; margin: 0; color: #fff;}
+.p_summary h6 {font-weight: 600; font-size: 12px; margin: 0; color: #fff; text-transform: capitalize;}
 .p_summary span {color: #fff; margin: 0; font-size: 12px;}
 
 .search_chat {width: 40px; text-align: center; cursor: pointer;}
 .search_chat img{width: 20px;}
+
+#chat_panel .content .messages::-webkit-scrollbar {
+  width: 8px;
+  background: transparent;
+}
+#chat_panel .content .messages::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.messages ul li {
+  display: block;
+  clear: both;  
+  font-size: 14px;
+  margin: 0 0 10px;
+}
+#messageList {width: 100%; padding: 10px;}
 
 .content .messages {
   background-color: #000000;
@@ -271,26 +286,8 @@ button {cursor: pointer;}
   height: auto; min-height: calc(100% - 140px);
   max-height: calc(100% - 140px);
   width: 100%;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
-}
-#chat_panel .content .messages::-webkit-scrollbar {
-  width: 8px;
-  background: transparent;
-}
-#chat_panel .content .messages::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.3);
-}
-#chat_panel .content .messages ul li {
-  display: inline-block;
-  clear: both;
-  float: left;
-  margin: 15px 15px 0 15px;
-  width: calc(100% - 25px);
-  font-size: 0.9em;
-}
-#chat_panel .content .messages ul li:nth-last-child(1) {
-  margin-bottom: 20px;
 }
 #chat_panel .content .messages ul li.sent img {
   margin: 6px 8px 0 0;
@@ -332,11 +329,11 @@ button {cursor: pointer;}
   position: absolute;  
 }
 #chat_panel .content .messages ul li.sent p::before {
-  bottom: -15px;
+  bottom: -13px;
   left: 0;
   border-left: 0px solid transparent;
-  border-right: 15px solid transparent;  
-  border-top: 15px solid #646464;
+  border-right: 14px solid transparent;  
+  border-top: 13px solid #646464;
 }
 #chat_panel .content .messages ul li.replies p::before {
   bottom: -15px;
@@ -348,9 +345,10 @@ button {cursor: pointer;}
 #chat_panel .content .messages ul li.replies p {
   border-radius:15px 15px 0 15px ;
 }
+
 @media screen and (min-width: 735px) {
   #chat_panel .content .messages ul li p {
-    max-width: 80%;
+    max-width: 60%;
   }
 }
 .message-input {width: 100%; }
@@ -358,7 +356,7 @@ button {cursor: pointer;}
   position: relative;
 }
 .message-input .contact_items input {
-  font-family: "proxima-nova",  "Source Sans Pro", sans-serif;
+  height: 40px;
   float: left;
   border: none;
   width: calc(100% - 90px);
@@ -373,26 +371,11 @@ button {cursor: pointer;}
 }
 .message-input .contact_items input:focus {
   outline: none;
-}
-#chat_panel .content .message-input .contact_items .attachment {
-  position: absolute;
-  right: 60px;
-  z-index: 4;
-  margin-top: 10px;
-  font-size: 1.1em;
-  color: #435f7a;
-  opacity: .5;
-  cursor: pointer;
-}
-@media screen and (max-width: 735px) {
-  #chat_panel .content .message-input .contact_items .attachment {
-    margin-top: 17px;
-    right: 65px;
-  }
-}
-#chat_panel .content .message-input .contact_items .attachment:hover {
-  opacity: 1;
-}
+} 
+
+.file_attachment {position: absolute; right: 20px; top: 18px; cursor: pointer;}
+.file_attachment img {width: 12px;}
+
 #chat_panel .content .message-input .contact_items button {
   float: right;
   border: none;
@@ -414,9 +397,13 @@ button {cursor: pointer;}
   outline: none;
 }
 
-.msg_field { width: 100%; background: #000000; padding: 10px; border-radius: 10px; position: relative; }
+.message-input {width: 100%; padding: 10px; background: #000000; border-radius: 10px; }
+.msg_field { width: 100%; position: relative; }
 .msg_field input {width: 100%; border: 0; padding: 10px 15px; border-radius: 10px; background:#646464; color: #fff; outline: 0!important; height: 40px;}
 
-.title{
-  text-transform: capitalize;
-}
+.read_time {font-size: 10px; font-weight: 700; display: block; margin:2px 0 0;}
+.read_time i svg {margin-right: -5px;}
+.read_time i svg {width: 12px;}
+.unread svg path {fill: #fff;}
+.replies .read_time {text-align: right;}
+.sent .read_time {text-align: left;}
