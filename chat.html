@@ -63,9 +63,12 @@
 						<span>Harvey Specter</span>
 					</div>
 				</div>
-				<input type="text" id="msgSearchBar" placeholder="Search contacts..." onkeyup="searchMessageChanges()"/>
 				<div class="search_chat">
-					<img src="images/icons/search_icon.svg" alt="" />
+					<i><img src="images/icons/search_icon.svg" alt="" /></i>
+				</div>
+				<div class="search_box" style="display: none;">
+					<input type="text" id="msgSearchBar" placeholder="Search contacts..." onkeyup="searchMessageChanges()"/>
+					<i class="close_search"><img src="images/icons/close_icon.svg" alt="" /></i>
 				</div>
 			</div>
 			<div class="messages" >
@@ -124,12 +127,17 @@
 			};
 
 			$("#status-options").removeClass("active");
+		});			
+		//# sourceURL=pen.js
+
+		$(".search_chat").click(function(){
+			$(this).hide();
+			$(".search_box").show();
 		});
-
-		
-
-		
-//# sourceURL=pen.js
+		$(".close_search").click(function(){			
+			$(".search_chat").show();
+			$(".search_box").hide();
+		});
 	</script>
 </body>
 

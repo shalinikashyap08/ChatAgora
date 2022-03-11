@@ -34,7 +34,7 @@ button {cursor: pointer;}
 #search input {padding: 10px 0 10px 46px; width:100%; border-radius: 15px; border: 0; background: #707070; color: #fff; }
 #search input:focus {outline: none; background: #333;}
 
-#contacts {height: calc(100% - 220px); overflow-y: auto; overflow-x: hidden; padding: 35px 15px 15px 25px; background: #212121; border-radius: 10px; position: relative; }
+#contacts {height: calc(100% - 165px); overflow-y: auto; overflow-x: hidden; padding: 35px 15px 15px 25px; background: #212121; border-radius: 10px; position: relative; }
 #contacts hr {border-top: 0; border-color: #707070; margin: 10px 0 20px; width: 100%; position: absolute; top: 10px; left:0; z-index: 1;}
 
 @media screen and (max-width: 735px) {
@@ -90,15 +90,20 @@ button {cursor: pointer;}
 /* Right Section */
 #chat_panel .content { float: right; padding-left: 10px; width: calc(100% - 240px); height: 100%; border-radius: 10px; overflow: hidden; position: relative; }
 .right-header {width: 100%; display: flex; justify-content: space-between; align-items: center; background: #0E0E0E; border-radius: 7px; padding: 10px;} 
-.profile_pic {width: 250px;}
+.profile_pic {width: 200px;}
 .profile_pic figure {margin: 0;width: 40px; height: 40px;}
 .profile_pic img {width: 100%; object-fit: cover; height: 100%; border-radius: 50%; object-fit: cover;}
 .p_summary {padding: 5px 0 0 0; margin: auto 0 auto 10px; width: calc(100% - 10px - 50px);}
-.p_summary h6 {font-weight: 600; font-size: 12px; margin: 0; color: #fff; text-transform: capitalize;}
-.p_summary span {color: #fff; margin: 0; font-size: 12px;}
+.p_summary h6 {font-weight: 600; font-size: 12px; margin: 0; color: #fff; text-transform: capitalize; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;}
+.p_summary span {color: #fff; margin: 0; font-size: 12px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden}
 
 .search_chat {width: 40px; text-align: center; cursor: pointer;}
 .search_chat img{width: 20px;}
+.search_box {position: absolute; width: 160px; right: 15px; top: 15px;}
+.search_box input{background: #646464; height: 32px; padding: 5px 25px 5px 10px; border: 0; border-radius: 5px; outline: 0!important; font-size: 12px; width: 100%; color: #fff;}
+.close_search {cursor: pointer; position: absolute; right: 5px; top: 7px; opacity: .8;}
+.close_search img {width: 18px;}
+.close_search:hover {opacity: 1;}
 
 .messages::-webkit-scrollbar {
   width: 4px;
