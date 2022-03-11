@@ -1,0 +1,5 @@
+const APIS={
+    GET_USERS_LIST:'',
+    ADD_USER_TO_GROUP:'',
+    GET_PREVIOUS_MESSAGES:''
+}
