@@ -105,6 +105,7 @@ const appendRecievedMessage=(message)=>{
 	    $('.contact.active .preview').html('<span>You: </span>' + message.message);
 	    $(".messages").animate({ scrollTop: $(document).height() }, "fast");
     }
+    socket.emit('getUpdatedRoomList',{});
 }
 
 const clickPress=(event) =>{
