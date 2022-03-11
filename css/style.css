@@ -16,8 +16,12 @@ input::-moz-placeholder {
 button {cursor: pointer;}
 .btn-transparent {background: transparent; border: 0; outline: 0!important;}
 
-#chat_panel {height: 92vh; max-width: 670px; min-height: 300px; max-height: 720px; background: #2A2A2A; padding:10px; border-radius: 12px; } 
+#chat_panel {height: 92vh; display: inline-block; max-width: 670px; min-height: 300px; max-height: 720px; background: #2A2A2A; padding:10px; border-radius: 12px; } 
 .back_btn {background: transparent; padding: 0; border: 0; position: absolute; top: 5px; left: 0; cursor: pointer;}
+.expand_btn {display: none; background: #55C1D1; border-radius: 30px; width: 25px; height: 25px; padding: 3px; position: absolute; top: 0px; right: 0; cursor: pointer;}
+.expand_btn img {width: 100%;}
+
+.left_bar .expand_btn {display: flex;}
 
 #sidepanel {float: left; border-radius: 12px; min-width: 240px; max-width: 240px; height: 100%; background: #181818;
   border:1px solid #707070; color: #fff; padding: 12px; overflow: hidden; position: relative; }
@@ -116,9 +120,9 @@ button {cursor: pointer;}
 #messageList {width: 100%; padding: 10px;}
 .messages {background-color: #000000; margin: 10px 0; border-radius: 10px; height: auto; min-height: calc(100% - 140px); max-height: calc(100% - 140px);
 width: 100%; overflow-y: auto; overflow-x: hidden; }
-.messages ul li p {display: inline-block; padding: 10px 15px; border-radius: 20px; max-width: 205px; line-height: 130%; position: relative;}
+.messages ul li p {display:block; padding: 10px 15px; margin: 0 0 10px; border-radius: 20px; max-width: 205px; line-height: 130%; position: relative;}
 .messages ul li.sent img {margin: 6px 8px 0 0;}
-.messages ul li.sent p {background: #646464; color: #fff;margin: 0;}
+.messages ul li.sent p {background: #646464; color: #fff;}
 .messages ul li.replies img {float: right; margin: 6px 0 0 8px;}
 .messages ul li.replies p {background: #646464; color: #fff; float: right; }
 .messages ul li img {width: 22px; border-radius: 50%; float: left; }

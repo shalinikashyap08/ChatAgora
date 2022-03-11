@@ -23,7 +23,9 @@
 			<div class="chat_header">
 				<div class="c_title_bar">
 					<button class="back_btn"><img src="images/icons/back_icon.svg" alt="back" /></button>
+					<button class="back_btn"><img src="images/icons/back_icon.svg" alt="back" /></button>
 					<h1>Chat</h1>
+					<button class="btn-transparent expand_btn"><img src="images/icons/expand_icon.svg" alt="back" /></button>
 				</div>
 				<!-- <div class="d-flex btn_groups">
 					<button class="btn-transparent btn_edit">Edit </button>
@@ -129,7 +131,16 @@
 			$("#status-options").removeClass("active");
 		});			
 		//# sourceURL=pen.js
+		$(".back_btn").click(function(){			
+			$(".content").hide();
+			$("#sidepanel").addClass('left_bar');
+		});
+		$(".expand_btn").click(function(){			
+			$(".content").show();
+			$("#sidepanel").removeClass('left_bar');
+		});
 
+		// Search Box
 		$(".search_chat").click(function(){
 			$(this).hide();
 			$(".search_box").show();
