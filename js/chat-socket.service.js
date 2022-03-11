@@ -14,29 +14,19 @@ const connectSocket = () => {
 const initilizeSocketEvents = (socket) => {
   socket.emit('getUpdatedRoomList',{});
     socket.on('newMessage', (data) => {
-        console.log("newMessageData",data)
-      // updateMessageList(data.message);
-    //   socket.emit('getUpdatedUserList', { userInCall: userInCall, conversation: options.channel });
+        console.log("newMessageData",data);
+        appendRecievedMessage(data?.message);
     })
   
     socket.on('roomList', (data) => {
       console.log(data)
-    
-      
       updateUsersList(data?.rooms);
-      // userListInChat(data.rooms);
-      // if (data.rooms.length > 0) {
-      //   chatInput(true);
-      // }
     })
 
     socket.on('roomJoined', (data) => {
       console.log(data)
-     
       updateUsersList(data.rooms);
       updateMessages(data.messages)
     })
-
-  
    
   }
