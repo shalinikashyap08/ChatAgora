@@ -102,7 +102,7 @@ const appendRecievedMessage=(message)=>{
     if(selectedUserForChat._id==message.conversationId && userId!=message.senderId){
         $('<li class="replies"><p>' + message.message + '</p></li>').appendTo($('.messages ul'));
 	    $('.message-input input').val(null);
-	    $('.contact.active .preview').html('<span>You: </span>' + message);
+	    $('.contact.active .preview').html('<span>You: </span>' + message.message);
 	    $(".messages").animate({ scrollTop: $(document).height() }, "fast");
     }
 }
