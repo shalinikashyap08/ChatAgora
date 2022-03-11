@@ -6,7 +6,16 @@ let selectedUserForChatId;
 let selectedUserForChat;
 let fetchedUsersList;
 let flag;
+chatPage=1;
+searchResultPage=1;
+let APIS={
+    GET_USERS_LIST:'',
+    ADD_USER_TO_GROUP:'',
+    GET_PREVIOUS_MESSAGES:'user/get-chat'
+}
 const joinChat=(id)=>{
+    chatPage=1;
+    searchResultPage=1;
     console.log(id)
     selectedUserForChatId= id;
     socket.emit('joinGroup',{conversationId:id});
@@ -62,11 +71,16 @@ const setHtmlOfChat=(list,type)=>{
         </li>`;
         }
     }else if(type=='messageList'){
+        
+        
+        if(messageBox.scrollTop!=0||chatPage==1){
+            messagesList.innerHTML='';
+        }
         chatHeading.innerHTML='';
         chatHeading.innerHTML=chatHeading.innerHTML + `<h6 class="title">${selectedUserForChat?.name}</h6>`;
         // <span>Harvey Specter</span>
-        messagesList.innerHTML='';
-        console.log("fdsfsdfghjd",messagesList.innerHTML)
+       
+        
         for(let i=0;i<list.length;i++){
             console.log(list[i].senderId==userId)
             messagesList.innerHTML = `${list[i].senderId==userId?'<li class="sent"><p>'+list[i]?.message+'</p></li>':'<li class="replies"><p>'+list[i]?.message+'</p></li>'}`+messagesList.innerHTML;
@@ -79,7 +93,16 @@ const setHtmlOfChat=(list,type)=>{
         let top=messageBox.scrollTop;
         if(top==0 && flag){
             flag=false;
-            getPreviousMessages();
+            chatPage++;
+            
+            // if(searchResultPage!=0){
+            //     console.log('CHECK 1')
+            //     searchMessage();
+            // }else{
+            //     console.log('CHECK 2')
+                getPreviousMessages();
+            // }
+            
         }
     })
 }
@@ -98,6 +121,7 @@ const sendMessage=()=>{
 }
 
 const appendRecievedMessage=(message)=>{
+    socket.emit('getUpdatedRoomList',{});
     console.log(selectedUserForChatId,message.senderId)
     if(selectedUserForChat._id==message.conversationId && userId!=message.senderId){
         $('<li class="replies"><p>' + message.message + '</p></li>').appendTo($('.messages ul'));
@@ -105,7 +129,7 @@ const appendRecievedMessage=(message)=>{
 	    $('.contact.active .preview').html('<span>You: </span>' + message.message);
 	    $(".messages").animate({ scrollTop: $(document).height() }, "fast");
     }
-    socket.emit('getUpdatedRoomList',{});
+    
 }
 
 const clickPress=(event) =>{
@@ -115,9 +139,16 @@ const clickPress=(event) =>{
     }
 }
 
-const getPreviousMessages=async (id)=>{
+const getPreviousMessages=async ()=>{
     console.log('newMessage');
-    // let newMessages=await get(`${APIS.GET_PREVIOUS_MESSAGES}?id=${id}`);
+    let response=await get(`${APIS.GET_PREVIOUS_MESSAGES}?page=${chatPage}&conversationId=${selectedUserForChat._id}${msgSearchBar.value?'&searchText='+msgSearchBar.value:''}`);
+    let previousMessage=response.data.data;
+    console.log(previousMessage)
+    if(previousMessage.length>0){
+        updateMessages(previousMessage);
+    }
+    
+    
 }
 
 function debounce(func, timeout = 500){
@@ -136,5 +167,11 @@ function searchUser(){
 const searchChanges = debounce(() => searchUser());  
 
 
-
+const searchMessageChanges = debounce(()=> searchMessage())
     
+async function searchMessage(){
+    let msgSearchBar=document.getElementById('msgSearchBar');
+    console.log(msgSearchBar.value)
+    chatPage =1;
+  await getPreviousMessages();
+}
