@@ -20,8 +20,8 @@ button {cursor: pointer;}
 .back_btn {background: transparent; padding: 0; border: 0; position: absolute; top: 5px; left: 0; cursor: pointer;}
 
 #sidepanel {float: left; border-radius: 12px; min-width: 240px; max-width: 240px; height: 100%; background: #181818;
-  border:1px solid #707070; color: #fff; padding: 14px; overflow: hidden; position: relative; }
-.chat_header {width: 100%; border-bottom: 1px solid #707070; padding-bottom: 20px; margin-bottom: 20px;}
+  border:1px solid #707070; color: #fff; padding: 12px; overflow: hidden; position: relative; }
+.chat_header {width: 100%; margin-bottom: 20px;}
 .c_title_bar {text-align: center; position: relative; padding: 0 40px 15px;}
 .chat_header h1 {font-size:20px; color: #fff; margin: 0;}
 .btn_groups {width: 100%; margin: 0 0 3px;}
@@ -34,7 +34,8 @@ button {cursor: pointer;}
 #search input {padding: 10px 0 10px 46px; width:100%; border-radius: 15px; border: 0; background: #707070; color: #fff; }
 #search input:focus {outline: none; background: #333;}
 
-#contacts {height: calc(100% - 220px); overflow-y: auto; overflow-x: hidden; padding: 0 0 0 15px;}
+#contacts {height: calc(100% - 220px); overflow-y: auto; overflow-x: hidden; padding: 35px 15px 15px 25px; background: #212121; border-radius: 10px; position: relative; }
+#contacts hr {border-top: 0; border-color: #707070; margin: 10px 0 20px; width: 100%; position: absolute; top: 10px; left:0; z-index: 1;}
 
 @media screen and (max-width: 735px) {
   #contacts::-webkit-scrollbar {
